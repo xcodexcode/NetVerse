@@ -1,0 +1,11 @@
+{
+  "extends": ["next/core-web-vitals"],
+  "ignorePatterns": [
+    "node_modules/",
+    ".next/",
+    "app.js",
+    "firebase-client.js",
+    "firebase-config.js",
+    "*.mjs"
+  ]
+}
