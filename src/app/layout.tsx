@@ -1,19 +1,7 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono, Space_Grotesk } from "next/font/google";
 
 import { RootProviders } from "@/components/providers/root-providers";
 import "@/app/globals.css";
-
-const headingFont = Space_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-heading"
-});
-
-const monoFont = IBM_Plex_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-mono"
-});
 
 export const metadata: Metadata = {
   title: "NetVerse",
@@ -24,7 +12,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html
       lang="en"
-      className={`${headingFont.variable} ${monoFont.variable} dark`}
+      className="dark"
       suppressHydrationWarning
     >
       <body className="font-sans antialiased">

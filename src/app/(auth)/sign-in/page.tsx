@@ -1,19 +1,11 @@
-import { AuthForm } from "@/components/auth/auth-form";
-import { AuthShell } from "@/components/layout/auth-shell";
+import { Suspense } from "react";
 
-export default async function SignInPage({
-  searchParams
-}: {
-  searchParams: Promise<{ redirect?: string }>;
-}) {
-  const params = await searchParams;
+import { AuthRouteClient } from "@/components/auth/auth-route-client";
 
+export default function SignInPage() {
   return (
-    <AuthShell
-      title="Sign in to NetVerse"
-      description="Access your simulator workspace, labs, and saved network projects."
-    >
-      <AuthForm mode="sign-in" redirectTo={params.redirect} />
-    </AuthShell>
+    <Suspense>
+      <AuthRouteClient mode="sign-in" />
+    </Suspense>
   );
 }

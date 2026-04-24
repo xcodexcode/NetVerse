@@ -3,6 +3,8 @@
 @tailwind utilities;
 
 :root {
+  --font-heading: "Trebuchet MS", "Segoe UI", sans-serif;
+  --font-mono: "Cascadia Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   --background: 220 44% 7%;
   --foreground: 210 25% 96%;
   --card: 223 36% 10%;

@@ -1,11 +1,11 @@
-import { SimulatorWorkspace } from "@/components/simulator/simulator-workspace";
+import { Suspense } from "react";
 
-export default async function SimulatorRoute({
-  searchParams
-}: {
-  searchParams: Promise<{ lab?: string; project?: string }>;
-}) {
-  const params = await searchParams;
+import { SimulatorRouteClient } from "@/components/simulator/simulator-route-client";
 
-  return <SimulatorWorkspace labId={params.lab ?? null} projectQueryId={params.project ?? null} />;
+export default function SimulatorRoute() {
+  return (
+    <Suspense>
+      <SimulatorRouteClient />
+    </Suspense>
+  );
 }

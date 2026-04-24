@@ -3,11 +3,11 @@
 import { useState, type ComponentType } from "react";
 import { Bot, Lightbulb, Network, Sparkles } from "lucide-react";
 
-import { useAuth } from "@/components/providers/auth-provider";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { buildFallbackAnalysis } from "@/lib/ai/prompt";
 import type { AiAnalysisOutput } from "@/lib/ai/schema";
 import type { AiAction } from "@/lib/ai/types";
 import { analyzeTopology } from "@/lib/simulator/engine";
@@ -27,9 +27,7 @@ const actions = [
 export function AiAssistantPanel() {
   const topology = useSimulatorStore((state) => state.topology);
   const diagnostics = analyzeTopology(topology);
-  const { getIdToken } = useAuth();
   const [analysis, setAnalysis] = useState<AiAnalysisOutput | null>(null);
-  const [mode, setMode] = useState<"idle" | "openai" | "fallback">("idle");
   const [activeAction, setActiveAction] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -38,26 +36,7 @@ export function AiAssistantPanel() {
     setActiveAction(trigger);
 
     try {
-      const token = await getIdToken();
-      const response = await fetch("/api/ai/analyze", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          ...(token ? { Authorization: `Bearer ${token}` } : {})
-        },
-        body: JSON.stringify({
-          trigger,
-          topology
-        })
-      });
-
-      const payload = await response.json();
-      if (!response.ok) {
-        throw new Error(payload.error ?? "Unable to analyze topology.");
-      }
-
-      setAnalysis(payload.analysis as AiAnalysisOutput);
-      setMode(payload.mode === "openai" ? "openai" : "fallback");
+      setAnalysis(buildFallbackAnalysis(topology, trigger));
     } catch (requestError) {
       setError(requestError instanceof Error ? requestError.message : "Unable to analyze topology.");
     } finally {
@@ -73,7 +52,7 @@ export function AiAssistantPanel() {
         </Badge>
         <CardTitle>Topology-aware analysis panel</CardTitle>
         <CardDescription>
-          The assistant uses your live topology, recent ping result, and simulator rule violations as context. Secrets stay on the server.
+          The assistant uses your live topology, recent ping result, and simulator rule violations as context.
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
@@ -95,9 +74,7 @@ export function AiAssistantPanel() {
           <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
             <div className="mb-3 flex items-center justify-between gap-3">
               <p className="font-medium text-foreground">{analysis.headline}</p>
-              <Badge variant={mode === "openai" ? "success" : "warning"}>
-                {mode === "openai" ? "OpenAI live" : "Fallback rules"}
-              </Badge>
+              <Badge variant="warning">Fallback rules</Badge>
             </div>
             <div className="space-y-4 text-sm">
               <div>
