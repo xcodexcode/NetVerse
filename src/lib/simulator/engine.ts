@@ -230,7 +230,7 @@ export function analyzeTopology(topology: TopologySnapshot) {
             level: "error",
             deviceId: device.id,
             message: `${device.name} ${routerInterface.name} is connected to more than one link.`,
-            suggestion: "Use one physical link per router interface in this MVP."
+            suggestion: "Use one physical link per router interface in this lab model."
           })
         );
       }
@@ -321,7 +321,7 @@ export function evaluatePing(topology: TopologySnapshot, sourceId: string, desti
         createIssue({
           code: "INVALID_ENDPOINT_SELECTION",
           level: "error",
-          message: "Only PCs and servers can be used as ping endpoints in this MVP."
+          message: "Only PCs and servers can be used as ping endpoints in this lab model."
         })
       ]
     );

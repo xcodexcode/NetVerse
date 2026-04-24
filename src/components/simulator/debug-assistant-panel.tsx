@@ -7,9 +7,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { buildFallbackAnalysis } from "@/lib/ai/prompt";
-import type { AiAnalysisOutput } from "@/lib/ai/schema";
-import type { AiAction } from "@/lib/ai/types";
+import { buildDiagnosticSummary } from "@/lib/diagnostics/prompt";
+import type { DiagnosticAnalysisOutput } from "@/lib/diagnostics/schema";
+import type { DiagnosticAction } from "@/lib/diagnostics/types";
 import { analyzeTopology } from "@/lib/simulator/engine";
 import { useSimulatorStore } from "@/store/simulator-store";
 
@@ -19,24 +19,24 @@ const actions = [
   { id: "fixes", label: "Suggest Fixes", icon: Sparkles },
   { id: "teach", label: "Teach Me Why", icon: Lightbulb }
 ] as const satisfies ReadonlyArray<{
-  id: AiAction;
+  id: DiagnosticAction;
   label: string;
   icon: ComponentType<{ className?: string }>;
 }>;
 
-export function AiAssistantPanel() {
+export function DebugAssistantPanel() {
   const topology = useSimulatorStore((state) => state.topology);
   const diagnostics = analyzeTopology(topology);
-  const [analysis, setAnalysis] = useState<AiAnalysisOutput | null>(null);
+  const [analysis, setAnalysis] = useState<DiagnosticAnalysisOutput | null>(null);
   const [activeAction, setActiveAction] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  async function runAction(trigger: "analyze" | "failure" | "fixes" | "teach") {
+  async function runAction(trigger: DiagnosticAction) {
     setError(null);
     setActiveAction(trigger);
 
     try {
-      setAnalysis(buildFallbackAnalysis(topology, trigger));
+      setAnalysis(buildDiagnosticSummary(topology, trigger));
     } catch (requestError) {
       setError(requestError instanceof Error ? requestError.message : "Unable to analyze topology.");
     } finally {
@@ -48,7 +48,7 @@ export function AiAssistantPanel() {
     <Card className="h-full">
       <CardHeader>
         <Badge variant="warning" className="w-fit">
-          AI debug assistant
+          Debug assistant
         </Badge>
         <CardTitle>Topology-aware analysis panel</CardTitle>
         <CardDescription>
@@ -74,7 +74,7 @@ export function AiAssistantPanel() {
           <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
             <div className="mb-3 flex items-center justify-between gap-3">
               <p className="font-medium text-foreground">{analysis.headline}</p>
-              <Badge variant="warning">Fallback rules</Badge>
+              <Badge variant="warning">Rule checks</Badge>
             </div>
             <div className="space-y-4 text-sm">
               <div>

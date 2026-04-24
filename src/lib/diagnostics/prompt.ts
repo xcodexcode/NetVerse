@@ -1,41 +1,12 @@
-import type { AiAnalysisOutput } from "@/lib/ai/schema";
-import { analyzeTopology, summarizeTopology } from "@/lib/simulator/engine";
-import type { AiAction } from "@/lib/ai/types";
+import type { DiagnosticAnalysisOutput } from "@/lib/diagnostics/schema";
+import type { DiagnosticAction } from "@/lib/diagnostics/types";
+import { analyzeTopology } from "@/lib/simulator/engine";
 import type { TopologySnapshot } from "@/types/simulator";
 
-const triggerPrompts: Record<AiAction, string> = {
-  analyze: "Give a broad network diagnosis focused on what currently works, what is broken, and why.",
-  failure: "Focus tightly on the latest failed ping. Explain the most likely reason it failed.",
-  fixes: "Prioritize the exact configuration changes the user should make next.",
-  teach: "Explain the networking concept in beginner-friendly language using the current topology."
-};
-
-export function buildSystemPrompt(trigger: AiAction) {
-  return [
-    "You are NetVerse, a practical network debugging assistant for network engineers and IT students.",
-    "Only reason about the topology, device configs, links, ping result, and rule violations provided to you.",
-    "Do not invent unsupported protocols, VLANs, NAT, ACLs, DNS behavior, or platform features that are not present.",
-    "Keep recommendations specific and implementable within a simple IPv4 lab simulator.",
-    "Explain clearly enough for beginners without being condescending.",
-    triggerPrompts[trigger]
-  ].join("\n");
-}
-
-export function buildUserContext(topology: TopologySnapshot, trigger: AiAction) {
-  const issues = analyzeTopology(topology);
-  const summary = summarizeTopology(topology);
-
-  return {
-    trigger,
-    summary,
-    devices: topology.devices,
-    links: topology.links,
-    recentPing: topology.recentPing,
-    ruleViolations: issues
-  };
-}
-
-export function buildFallbackAnalysis(topology: TopologySnapshot, trigger: AiAction): AiAnalysisOutput {
+export function buildDiagnosticSummary(
+  topology: TopologySnapshot,
+  trigger: DiagnosticAction
+): DiagnosticAnalysisOutput {
   const issues = analyzeTopology(topology);
   const recentPing = topology.recentPing;
   const topIssues = (recentPing?.diagnostics.length ? recentPing.diagnostics : issues).slice(0, 3);
@@ -68,7 +39,7 @@ export function buildFallbackAnalysis(topology: TopologySnapshot, trigger: AiAct
     beginnerExplanation:
       trigger === "teach"
         ? "Packets can only move when the path is physically connected, addressing matches the intended subnet, and routers are reachable through the correct gateway. The flagged issues break one of those basics."
-        : "The fallback assistant is summarizing the simulator's rule checks because the OpenAI key is not configured yet.",
+        : "The debug panel is summarizing the simulator's rule checks from the current topology.",
     confidence: "medium",
     referencedIssues: topIssues.map((issue) => issue.code)
   };

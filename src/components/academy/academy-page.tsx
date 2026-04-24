@@ -224,7 +224,7 @@ function NetworkingLabPanel() {
               </Badge>
               <CardTitle>Topology builder and lab launcher</CardTitle>
               <CardDescription>
-                Jump into real device layouts, cable paths, ping results, and AI-assisted troubleshooting.
+                Jump into real device layouts, cable paths, ping results, and guided troubleshooting.
               </CardDescription>
             </div>
             <Network className="h-8 w-8 text-primary" />

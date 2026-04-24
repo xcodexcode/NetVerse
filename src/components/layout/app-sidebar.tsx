@@ -34,7 +34,7 @@ export function AppSidebar() {
 
       <div className="mb-8 rounded-3xl border border-primary/15 bg-primary/10 p-4">
         <Badge variant="info" className="mb-3 w-fit">
-          Live MVP
+          Live workspace
         </Badge>
         <h3 className="font-[family-name:var(--font-heading)] text-xl font-semibold text-foreground">
           Your network command center

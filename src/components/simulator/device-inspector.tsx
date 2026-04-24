@@ -79,7 +79,7 @@ export function DeviceInspector() {
 
           {selectedDevice.kind === "switch" ? (
             <div className="rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-muted-foreground">
-              Switches are unmanaged in this MVP and act as simple layer 2 forwarding devices.
+              Switches are unmanaged in this lab model and act as simple layer 2 forwarding devices.
             </div>
           ) : null}
 

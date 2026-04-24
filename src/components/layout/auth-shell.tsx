@@ -21,10 +21,10 @@ export function AuthShell({
                 Build. Break. Fix. Master networks.
               </p>
               <h1 className="max-w-xl font-[family-name:var(--font-heading)] text-5xl font-semibold leading-tight text-gradient">
-                A premium network simulation workspace for engineers and learners.
+                A focused network simulation workspace for engineers and learners.
               </h1>
               <p className="max-w-xl text-lg text-muted-foreground">
-                Design topologies, test connectivity, debug issues with AI, and complete guided labs in one focused workflow.
+                Design topologies, test connectivity, read clear failure notes, and complete guided labs in one workflow.
               </p>
             </div>
           </div>

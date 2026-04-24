@@ -82,7 +82,7 @@ export const labCatalog: LabDefinition[] = [
       "Give both PCs matching subnet information and test the ping."
     ],
     hints: [
-      "Switches bridge traffic without needing IP configuration in this MVP.",
+      "Switches bridge traffic without needing IP configuration in this lab model.",
       "Both hosts should still be in the same network."
     ],
     starterTopology: {

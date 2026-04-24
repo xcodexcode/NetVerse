@@ -73,10 +73,10 @@ export function DashboardPage() {
               {isDemoMode ? "Running in local demo mode" : "Firebase connected"}
             </Badge>
             <CardTitle className="max-w-2xl font-[family-name:var(--font-heading)] text-3xl">
-              Build topologies, validate labs, and debug faster with AI that understands your network state.
+              Build topologies, validate labs, and debug network state from one workspace.
             </CardTitle>
             <CardDescription className="max-w-2xl text-base">
-              NetVerse combines a simulator workspace, deterministic connectivity engine, guided labs, and server-side AI analysis in one modern workflow.
+              NetVerse combines a simulator workspace, deterministic connectivity checks, guided labs, and saved practice history.
             </CardDescription>
           </CardHeader>
           <CardContent className="flex flex-wrap gap-3">
@@ -97,7 +97,7 @@ export function DashboardPage() {
               Progress overview
             </Badge>
             <CardTitle>Focus this session</CardTitle>
-            <CardDescription>Suggested next moves for the MVP workflow.</CardDescription>
+            <CardDescription>Suggested next moves for today&apos;s practice session.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             {[
@@ -169,10 +169,10 @@ export function DashboardPage() {
         <Card>
           <CardHeader>
             <Badge variant="info" className="w-fit">
-              Product pulse
+              Study flow
             </Badge>
-            <CardTitle>What makes the experience feel premium</CardTitle>
-            <CardDescription>UX details that give the MVP momentum.</CardDescription>
+            <CardTitle>What keeps practice moving</CardTitle>
+            <CardDescription>Small workflow details that make repeat sessions easier.</CardDescription>
           </CardHeader>
           <CardContent className="grid gap-4 sm:grid-cols-2">
             {[

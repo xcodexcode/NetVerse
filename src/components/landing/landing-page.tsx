@@ -14,12 +14,12 @@ const features = [
   {
     icon: Waypoints,
     title: "Visual simulation",
-    description: "Drag devices onto a polished canvas, cable them together, and inspect every network element."
+    description: "Drag devices onto a canvas, cable them together, and inspect every network element."
   },
   {
     icon: BrainCircuit,
     title: "Explainable diagnostics",
-    description: "Pair a deterministic connectivity engine with AI guidance that stays grounded in the current topology."
+    description: "Pair a deterministic connectivity engine with clear troubleshooting notes."
   },
   {
     icon: Shield,
@@ -71,14 +71,14 @@ export function LandingPage() {
             className="space-y-8"
           >
             <Badge variant="info" className="w-fit">
-              Premium MVP for network engineers and IT students
+              Built for network engineers and IT students
             </Badge>
             <div className="space-y-6">
               <p className="text-sm uppercase tracking-[0.35em] text-primary/80">
                 Build. Break. Fix. Master networks.
               </p>
               <h1 className="max-w-3xl font-[family-name:var(--font-heading)] text-5xl font-semibold leading-tight text-gradient sm:text-6xl">
-                The modern network lab where topology design, testing, labs, and AI debugging finally live together.
+                A network lab where topology design, testing, and guided practice live together.
               </h1>
               <p className="max-w-2xl text-lg text-muted-foreground">
                 NetVerse gives junior engineers and IT students a serious engineering workspace to model topologies, diagnose failures, and grow faster with guided hands-on practice.
@@ -97,7 +97,7 @@ export function LandingPage() {
             </div>
             <div className="grid max-w-2xl gap-4 sm:grid-cols-3">
               {[
-                { label: "Modules", value: "Simulator, AI, Labs" },
+                { label: "Modules", value: "Simulator, Academy, Labs" },
                 { label: "Target Users", value: "CCNA beginners to junior engineers" },
                 { label: "Persistence", value: "Firebase Auth + Firestore" }
               ].map((item) => (
@@ -123,9 +123,9 @@ export function LandingPage() {
                   <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
                     Simulator Preview
                   </p>
-                  <p className="font-medium text-foreground">Topology + AI assistant + ping console</p>
+                  <p className="font-medium text-foreground">Topology + debug notes + ping console</p>
                 </div>
-                <Badge variant="success">Interactive MVP</Badge>
+                <Badge variant="success">Interactive lab</Badge>
               </div>
               <div className="grid gap-4 lg:grid-cols-[220px_minmax(0,1fr)_280px]">
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
@@ -153,7 +153,7 @@ export function LandingPage() {
                   </div>
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                  <p className="mb-4 text-xs uppercase tracking-[0.25em] text-muted-foreground">AI Analysis</p>
+                  <p className="mb-4 text-xs uppercase tracking-[0.25em] text-muted-foreground">Debug Notes</p>
                   <div className="space-y-3 text-sm">
                     <div className="rounded-2xl border border-rose-400/20 bg-rose-400/10 p-4 text-rose-100">
                       Connectivity fails because the destination subnet has no active router interface.
@@ -173,10 +173,10 @@ export function LandingPage() {
         <div className="mb-8 max-w-2xl space-y-3">
           <p className="text-sm uppercase tracking-[0.3em] text-primary/80">Core modules</p>
           <h2 className="font-[family-name:var(--font-heading)] text-4xl font-semibold text-foreground">
-            Everything the MVP needs, without the clutter.
+            Focused practice tools without the clutter.
           </h2>
           <p className="text-muted-foreground">
-            The first release focuses on high-value workflows: topology building, connectivity testing, AI diagnosis, guided labs, and persistence.
+            The current release focuses on topology building, connectivity testing, guided diagnostics, labs, and saved progress.
           </p>
         </div>
         <div className="grid gap-6 lg:grid-cols-3">
@@ -203,7 +203,7 @@ export function LandingPage() {
               </Badge>
               <CardTitle>Designed for daily skill-building</CardTitle>
               <CardDescription>
-                Start with direct same-subnet communication, move into switching, then tackle a broken routed scenario with AI guidance and deterministic checks.
+                Start with direct same-subnet communication, move into switching, then tackle a broken routed scenario with deterministic checks.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -225,15 +225,15 @@ export function LandingPage() {
               </Badge>
               <CardTitle>Built to feel like a serious engineering product</CardTitle>
               <CardDescription>
-                Dark-mode-first visuals, clean information hierarchy, subtle motion, and practical explanations keep the experience polished without turning it into a toy.
+                Dark-mode-first visuals, clean information hierarchy, subtle motion, and practical explanations keep the experience useful without turning it into a toy.
               </CardDescription>
             </CardHeader>
             <CardContent className="grid gap-4 md:grid-cols-2">
               {[
-                "Premium dark interface with electric green and blue accents",
+                "Dark interface with electric green and blue accents",
                 "Beginner-friendly explanations that stay technically honest",
                 "Project saving, resuming, and progress tracking",
-                "Server-side AI integration with protected credentials"
+                "Spark-plan Firebase Hosting with Firestore persistence"
               ].map((item) => (
                 <div key={item} className="rounded-2xl border border-white/10 bg-slate-950/60 p-4 text-sm text-slate-200">
                   {item}

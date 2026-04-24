@@ -7,7 +7,7 @@ import { FlaskConical, Save } from "lucide-react";
 
 import { useAuth } from "@/components/providers/auth-provider";
 import { LabGuidePanel } from "@/components/labs/lab-guide-panel";
-import { AiAssistantPanel } from "@/components/simulator/ai-assistant-panel";
+import { DebugAssistantPanel } from "@/components/simulator/debug-assistant-panel";
 import { DeviceInspector } from "@/components/simulator/device-inspector";
 import { DevicePalette } from "@/components/simulator/device-palette";
 import { OnboardingTip } from "@/components/simulator/onboarding-tip";
@@ -175,14 +175,14 @@ export function SimulatorWorkspace({
         <Tabs defaultValue="inspect" className="h-full">
           <TabsList className={`grid w-full ${activeLab ? "grid-cols-3" : "grid-cols-2"}`}>
             <TabsTrigger value="inspect">Properties</TabsTrigger>
-            <TabsTrigger value="ai">AI Panel</TabsTrigger>
+            <TabsTrigger value="ai">Debug Panel</TabsTrigger>
             {activeLab ? <TabsTrigger value="lab">Lab Guide</TabsTrigger> : null}
           </TabsList>
           <TabsContent value="inspect" className="h-[calc(100%-56px)]">
             <DeviceInspector />
           </TabsContent>
           <TabsContent value="ai" className="h-[calc(100%-56px)]">
-            <AiAssistantPanel />
+            <DebugAssistantPanel />
           </TabsContent>
           {activeLab ? (
             <TabsContent value="lab" className="h-[calc(100%-56px)]">
