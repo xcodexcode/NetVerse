@@ -24,50 +24,7 @@ The current MVP includes:
 - Authenticated dashboard and project library
 - Firebase-backed persistence
 
-## Product Experience
 
-NetVerse is designed to feel like a serious engineering tool:
-
-- dark-mode-first UI
-- premium electric green and blue visual system
-- subtle motion and polished panels
-- beginner-friendly explanations without watering down the technical logic
-- desktop-first simulator workspace with responsive supporting screens
-
-## Tech
-
-- Next.js App Router
-- TypeScript
-- Tailwind CSS
-- shadcn-style component system
-- React Flow
-- Framer Motion
-- Zustand
-- Zod
-- Firebase Auth and Firestore
-- OpenAI API through a secure server route
-
-## Repo Notes
-
-This is the public product repository for NetVerse.
-
-- Production infrastructure is managed by the NetVerse team.
-- Production secrets are not stored in this repository.
-- The app is deployed through managed Firebase infrastructure.
-
-## Team Development
-
-For local team development:
-
-```powershell
-npm.cmd install
-Copy-Item .env.local.example .env.local
-npm.cmd run dev
-```
-
-Then open `http://localhost:3000`.
-
-`npm.cmd run lint`, `npm.cmd run typecheck`, `npm.cmd run test`, and `npm.cmd run build` are all configured.
 
 ## Status
 
