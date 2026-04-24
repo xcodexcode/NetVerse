@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { Activity, ArrowRight, BookOpen, FolderKanban, Orbit, Sparkles } from "lucide-react";
+import { Activity, ArrowRight, BookOpen, BrainCircuit, FolderKanban, Orbit, Sparkles } from "lucide-react";
 
 import { useAuth } from "@/components/providers/auth-provider";
 import { Badge } from "@/components/ui/badge";
@@ -14,6 +14,12 @@ import type { LabProgressRecord } from "@/types/lab";
 import type { SavedProject } from "@/types/project";
 
 const overviewCards = [
+  {
+    title: "Academy command center",
+    description: "Subnetting, AWS drills, Linux practice, packet flow, cost, and interviews.",
+    href: "/academy",
+    icon: BrainCircuit
+  },
   {
     title: "Continue last project",
     description: "Jump back into your current topology workspace.",
@@ -81,7 +87,7 @@ export function DashboardPage() {
               </Link>
             </Button>
             <Button asChild variant="secondary">
-              <Link href="/labs">Resume labs</Link>
+              <Link href="/academy">Open Academy</Link>
             </Button>
           </CardContent>
         </Card>
@@ -107,7 +113,7 @@ export function DashboardPage() {
         </Card>
       </section>
 
-      <section className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      <section className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
         {overviewCards.map((card) => (
           <Card key={card.title}>
             <CardHeader>
@@ -145,7 +151,7 @@ export function DashboardPage() {
                   <div>
                     <p className="font-medium text-foreground">{project.title}</p>
                     <p className="text-sm text-muted-foreground">
-                      {project.topology.devices.length} devices • {project.topology.links.length} links
+                      {project.topology.devices.length} devices / {project.topology.links.length} links
                     </p>
                   </div>
                   <Button asChild variant="ghost" size="sm">

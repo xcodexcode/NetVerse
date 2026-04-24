@@ -94,7 +94,7 @@ export function ProjectLibraryPage() {
                   <div className="space-y-2">
                     <p className="font-medium text-foreground">{project.title}</p>
                     <p className="text-sm text-muted-foreground">
-                      {project.topology.devices.length} devices • {project.topology.links.length} links • updated{" "}
+                      {project.topology.devices.length} devices / {project.topology.links.length} links / updated{" "}
                       {new Date(project.updatedAt).toLocaleString()}
                     </p>
                   </div>
