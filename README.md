@@ -1,77 +1,122 @@
-# NetVerse
+NetVerse
 
-**Build. Break. Fix. Master networks.**
+Build. Break. Fix. Master networks.
 
-NetVerse is a hands-on learning workspace for network engineers, IT students, CCNA beginners, and junior infrastructure operators.
+NetVerse is a hands-on learning workspace for network engineers, IT students, and CCNA learners who want to move beyond theory and actually understand how networks behave.
 
-It combines a visual network simulator, guided labs, diagnostics, note-taking, flashcards, resource guarding, productivity tools, converters, and roadmap planning into one focused engineering environment.
+It is designed for people who learn best by doing, testing, failing, and fixing.
 
 Live product: https://thenetverse-fa29d.web.app
 
-## Product
+Overview
 
-NetVerse is designed around a simple idea: learning networking should feel practical, visual, and repeatable.
+Learning networking is often fragmented. You switch between videos, notes, calculators, labs, and random tools without a clear workflow.
 
-Instead of jumping between notebooks, subnet calculators, YouTube playlists, flashcard apps, task lists, and topology sketches, NetVerse brings the core learning loop into one place:
+NetVerse brings everything into one environment built around a simple loop:
 
-- Build a topology.
-- Break it safely.
-- Diagnose what failed.
-- Capture the lesson.
-- Convert it into flashcards.
-- Plan the next milestone.
+Build a topology.
+Break it safely.
+Diagnose what failed.
+Understand why.
+Repeat until it clicks.
 
-## What Is Live
+This is how real understanding is built.
 
-- Visual simulator with PCs, switches, routers, servers, links, device configs, and ping validation.
-- Explainable connectivity diagnostics for subnet, gateway, path, and router interface issues.
-- Guided labs with objectives, validation, hints, completion state, and saved progress.
-- Academy modules for subnetting, AWS, Linux, packet flow, hardening, cost awareness, and interviews.
-- Learning Studio with notes, concept schemas, flashcards, resource vault, Pomodoro, tasks, converters, and roadmap builder.
-- Project library for saved topologies.
-- Firebase Auth and Firestore-backed persistence.
-- Dark, premium, engineering-focused UI.
+Product
 
-## Learning Studio
+NetVerse combines multiple tools into a single focused workspace so you can stay in flow while learning.
 
-Studio turns NetVerse from a simulator into a full learning operating system.
+Visual Network Simulator
+Create topologies with PCs, routers, switches, and servers
+Configure devices and links
+Test connectivity using ping validation
+Observe how networks behave in practice
+Diagnostics Engine
 
-- Notes workspace: capture lab summaries, commands, mistakes, and explanations.
-- Concept schema board: visually map topics like subnets, switches, routers, NAT, gateways, and packet flow.
-- Flashcard forge: create cards manually, generate cards from notes, or import simple text/PDF material.
-- Resource guard: save high-signal links, docs, tools, videos, and YouTube playlists.
-- Pomodoro cockpit: run focused study blocks without leaving the app.
-- Mission list: track daily practice tasks.
-- Engineer converters: subnet, binary/decimal/hex, bandwidth-delay product, MTU payload, and common ports.
-- Roadmap builder: use presets or build a custom path for CCNA, cloud networking, or Linux network ops.
+When something fails, NetVerse explains why.
 
-## Tech
+It helps identify:
 
-- Next.js App Router
-- TypeScript
-- Tailwind CSS
-- React Flow
-- Radix UI primitives
-- Framer Motion
-- Zustand
-- Zod
-- Firebase Hosting
-- Firebase Auth
-- Cloud Firestore
-- Vitest
+subnet misconfigurations
+gateway errors
+routing and path issues
+interface problems
 
-## Status
+The goal is not just to detect failure, but to explain it clearly.
 
-NetVerse is in active product development. The current build is a polished MVP moving toward a broader network-learning platform.
+Guided Labs
+Structured objectives
+Built-in validation
+Hints when needed
+Progress tracking
 
-The public repository does not contain secrets, private deployment credentials, Firebase admin keys, or production environment files.
+Labs are designed to reinforce concepts through repetition and feedback.
 
-## Quality Bar
+Academy Modules
 
-NetVerse is built to feel like a serious product:
+Covers essential topics such as:
 
-- Practical workflows over toy demos.
-- Beginner-friendly language without dumbing down the engineering.
-- Clean separation between UI, simulator logic, persistence, diagnostics, labs, and learning tools.
-- Typed models and tested critical utility logic.
-- Public-facing copy that represents an owned product, not a clone-and-configure template.
+subnetting
+Linux networking
+AWS fundamentals
+packet flow
+network hardening
+cost awareness
+interview preparation
+Learning Studio
+
+The Learning Studio turns NetVerse into a complete learning environment.
+
+Notes Workspace
+
+Capture lab summaries, commands, mistakes, and explanations in one place.
+
+Concept Mapping
+
+Visualize relationships between networking concepts such as subnets, routing, NAT, gateways, and packet flow.
+
+Flashcards
+
+Create cards manually, generate them from notes, or import simple material to reinforce memory.
+
+Resource Vault
+
+Store curated, high-quality resources such as documentation, tools, and videos without clutter.
+
+Focus Tools
+
+Includes Pomodoro sessions and task tracking to maintain consistency during study sessions.
+
+Engineering Utilities
+
+Built-in tools for:
+
+subnet calculations
+binary, decimal, and hexadecimal conversions
+MTU and payload understanding
+bandwidth-delay calculations
+common port references
+Roadmap Builder
+
+Follow structured learning paths or create your own roadmap for networking, cloud, or Linux.
+
+Project Library
+
+Save and manage your network topologies.
+Track your progress and revisit past work.
+
+Tech Stack
+Next.js (App Router)
+TypeScript
+Tailwind CSS
+React Flow
+Radix UI
+Framer Motion
+Zustand
+Zod
+Firebase (Auth, Firestore, Hosting)
+Vitest
+Status
+
+NetVerse is an actively developed product.
+The current version is a stable and structured MVP, with continuous improvements planned.
