@@ -109,7 +109,7 @@ export function SimulatorWorkspace({
   }
 
   return (
-    <div className="relative grid h-full min-h-[calc(100vh-89px)] gap-4 p-4 lg:grid-cols-[260px_minmax(0,1fr)_340px] lg:grid-rows-[auto_minmax(0,1fr)_220px]">
+    <div className="relative grid h-[calc(100vh-89px)] min-h-0 gap-4 overflow-y-auto p-4 lg:grid-cols-[260px_minmax(0,1fr)_340px] lg:grid-rows-[auto_minmax(520px,1fr)_minmax(300px,auto)]">
       <OnboardingTip />
 
       <Card className="lg:col-span-3">

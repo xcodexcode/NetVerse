@@ -35,8 +35,8 @@ export function PingConsole() {
   );
 
   return (
-    <Card className="h-full">
-      <CardHeader className="pb-4">
+    <Card className="flex h-full min-h-[300px] flex-col">
+      <CardHeader className="shrink-0 pb-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <Badge variant="default" className="mb-3 w-fit">
@@ -53,7 +53,7 @@ export function PingConsole() {
           </div>
         </div>
       </CardHeader>
-      <CardContent className="grid h-[220px] gap-4 lg:grid-cols-[340px_minmax(0,1fr)]">
+      <CardContent className="grid min-h-0 flex-1 gap-4 lg:grid-cols-[340px_minmax(0,1fr)]">
         <div className="grid gap-3">
           <div className="space-y-2">
             <p className="text-sm font-medium text-foreground">Source endpoint</p>
