@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import {
   BookOpen,
   BrainCircuit,
+  FileText,
   FolderKanban,
   Gauge,
   Orbit,
@@ -19,6 +20,7 @@ import { cn } from "@/lib/utils/cn";
 
 const navItems = [
   { href: "/dashboard", label: "Dashboard", icon: Gauge },
+  { href: "/studio", label: "Studio", icon: FileText },
   { href: "/academy", label: "Academy", icon: BrainCircuit },
   { href: "/simulator", label: "Simulator", icon: Orbit },
   { href: "/labs", label: "Labs", icon: BookOpen },
@@ -40,7 +42,7 @@ export function AppSidebar() {
           Your network command center
         </h3>
         <p className="mt-2 text-sm text-muted-foreground">
-          Train subnetting, AWS, Linux, packets, security, and interviews from one shared workspace.
+          Study, build, debug, take notes, map concepts, and turn hard topics into daily momentum.
         </p>
       </div>
 
@@ -73,11 +75,11 @@ export function AppSidebar() {
           Daily drill
         </div>
         <p className="mt-2 text-sm text-muted-foreground">
-          Run one subnet drill, one Linux command, and one AWS flashcard before you call the session done.
+          Run one focus sprint, one subnet conversion, and one flashcard review before you call the session done.
         </p>
         <Button asChild variant="secondary" className="mt-4 w-full justify-between">
-          <Link href="/academy">
-            Open Academy
+          <Link href="/studio">
+            Open Studio
             <PanelLeft className="h-4 w-4" />
           </Link>
         </Button>

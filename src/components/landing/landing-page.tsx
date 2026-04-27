@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Bot, BrainCircuit, Network, SaveAll, Shield, Waypoints } from "lucide-react";
+import { ArrowRight, Bot, BrainCircuit, FileText, Network, SaveAll, Shield, Waypoints } from "lucide-react";
 
 import { BrandMark } from "@/components/layout/brand-mark";
 import { useAuth } from "@/components/providers/auth-provider";
@@ -25,6 +25,11 @@ const features = [
     icon: Shield,
     title: "Guided labs and progress",
     description: "Move through curated networking scenarios with validation, hints, and saved progress."
+  },
+  {
+    icon: FileText,
+    title: "Learning Studio",
+    description: "Take notes, build concept schemas, make flashcards, guard resources, run Pomodoro, and plan roadmaps."
   }
 ];
 
@@ -81,7 +86,7 @@ export function LandingPage() {
                 A network lab where topology design, testing, and guided practice live together.
               </h1>
               <p className="max-w-2xl text-lg text-muted-foreground">
-                NetVerse gives junior engineers and IT students a serious engineering workspace to model topologies, diagnose failures, and grow faster with guided hands-on practice.
+                NetVerse gives junior engineers and IT students a serious engineering workspace to model topologies, diagnose failures, build study systems, and grow faster with guided hands-on practice.
               </p>
             </div>
             <div className="flex flex-col gap-4 sm:flex-row">
@@ -92,12 +97,12 @@ export function LandingPage() {
                 </Link>
               </Button>
               <Button asChild variant="secondary" size="lg">
-                <Link href="/simulator">Preview simulator shell</Link>
+                <Link href={user ? "/studio" : "/sign-up"}>Open Learning Studio</Link>
               </Button>
             </div>
             <div className="grid max-w-2xl gap-4 sm:grid-cols-3">
               {[
-                { label: "Modules", value: "Simulator, Academy, Labs" },
+                { label: "Modules", value: "Simulator, Studio, Academy, Labs" },
                 { label: "Target Users", value: "CCNA beginners to junior engineers" },
                 { label: "Persistence", value: "Firebase Auth + Firestore" }
               ].map((item) => (
@@ -176,10 +181,10 @@ export function LandingPage() {
             Focused practice tools without the clutter.
           </h2>
           <p className="text-muted-foreground">
-            The current release focuses on topology building, connectivity testing, guided diagnostics, labs, and saved progress.
+            The current release focuses on topology building, connectivity testing, guided diagnostics, labs, study workflows, roadmaps, and saved progress.
           </p>
         </div>
-        <div className="grid gap-6 lg:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {features.map((feature) => (
             <Card key={feature.title}>
               <CardHeader>
@@ -232,7 +237,7 @@ export function LandingPage() {
               {[
                 "Dark interface with electric green and blue accents",
                 "Beginner-friendly explanations that stay technically honest",
-                "Project saving, resuming, and progress tracking",
+                "Project saving, notes, resources, and progress tracking",
                 "Spark-plan Firebase Hosting with Firestore persistence"
               ].map((item) => (
                 <div key={item} className="rounded-2xl border border-white/10 bg-slate-950/60 p-4 text-sm text-slate-200">

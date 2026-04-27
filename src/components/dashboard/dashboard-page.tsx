@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { Activity, ArrowRight, BookOpen, BrainCircuit, FolderKanban, Orbit, Sparkles } from "lucide-react";
+import { Activity, ArrowRight, BookOpen, BrainCircuit, FileText, FolderKanban, Orbit, Sparkles } from "lucide-react";
 
 import { useAuth } from "@/components/providers/auth-provider";
 import { Badge } from "@/components/ui/badge";
@@ -14,6 +14,12 @@ import type { LabProgressRecord } from "@/types/lab";
 import type { SavedProject } from "@/types/project";
 
 const overviewCards = [
+  {
+    title: "Learning Studio",
+    description: "Notes, schema boards, flashcards, resources, Pomodoro, tasks, converters, and roadmaps.",
+    href: "/studio",
+    icon: FileText
+  },
   {
     title: "Academy command center",
     description: "Subnetting, AWS drills, Linux practice, packet flow, cost, and interviews.",
@@ -73,10 +79,10 @@ export function DashboardPage() {
               {isDemoMode ? "Running in local demo mode" : "Firebase connected"}
             </Badge>
             <CardTitle className="max-w-2xl font-[family-name:var(--font-heading)] text-3xl">
-              Build topologies, validate labs, and debug network state from one workspace.
+              Build topologies, validate labs, and run your entire network-learning system from one workspace.
             </CardTitle>
             <CardDescription className="max-w-2xl text-base">
-              NetVerse combines a simulator workspace, deterministic connectivity checks, guided labs, and saved practice history.
+              NetVerse combines a simulator, deterministic diagnostics, guided labs, notes, concept maps, flashcards, focus tools, converters, and roadmaps.
             </CardDescription>
           </CardHeader>
           <CardContent className="flex flex-wrap gap-3">
@@ -87,7 +93,7 @@ export function DashboardPage() {
               </Link>
             </Button>
             <Button asChild variant="secondary">
-              <Link href="/academy">Open Academy</Link>
+              <Link href="/studio">Open Studio</Link>
             </Button>
           </CardContent>
         </Card>
@@ -113,7 +119,7 @@ export function DashboardPage() {
         </Card>
       </section>
 
-      <section className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+      <section className="grid gap-6 md:grid-cols-2 xl:grid-cols-5">
         {overviewCards.map((card) => (
           <Card key={card.title}>
             <CardHeader>
@@ -178,6 +184,7 @@ export function DashboardPage() {
             {[
               { icon: Sparkles, label: "Animated topology states" },
               { icon: Activity, label: "Real ping success and failure badges" },
+              { icon: FileText, label: "Notes into flashcards and schemas" },
               { icon: Orbit, label: "Focused workspace layout" },
               { icon: BookOpen, label: "Lab-specific validation and hints" }
             ].map((item) => (

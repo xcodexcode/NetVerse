@@ -1,37 +1,57 @@
 # NetVerse
 
-NetVerse is a hands-on study app for networking, Linux, and AWS fundamentals.
+**Build. Break. Fix. Master networks.**
 
-I built it as a practical lab space: a place to practice subnetting, sketch small networks, run simple connectivity checks, keep lab notes, and prepare for junior infrastructure interviews.
+NetVerse is a hands-on learning workspace for network engineers, IT students, CCNA beginners, and junior infrastructure operators.
 
-Live site: https://thenetverse-fa29d.web.app
+It combines a visual network simulator, guided labs, diagnostics, note-taking, flashcards, resource guarding, productivity tools, converters, and roadmap planning into one focused engineering environment.
 
-## What works today
+Live product: https://thenetverse-fa29d.web.app
 
-- Visual network simulator with PCs, switches, routers, and servers
-- Guided networking labs with validation
-- Subnet calculator with masks, host ranges, wildcard masks, and binary output
-- Linux command drills
-- AWS flashcards and architecture practice
-- Packet-flow walkthroughs
-- Linux hardening checklist
-- Interview practice prompts
-- Firebase email/password auth
-- Firestore project saves and lab progress
+## Product
 
-## Current limits
+NetVerse is designed around a simple idea: learning networking should feel practical, visual, and repeatable.
 
-NetVerse is deployed on Firebase's free Spark plan, so it is a static app. There is no server runtime in production right now.
+Instead of jumping between notebooks, subnet calculators, YouTube playlists, flashcard apps, task lists, and topology sketches, NetVerse brings the core learning loop into one place:
 
-That means the simulator uses local rule-based diagnostics instead of a hosted backend service. The core learning tools still work in the browser.
+- Build a topology.
+- Break it safely.
+- Diagnose what failed.
+- Capture the lesson.
+- Convert it into flashcards.
+- Plan the next milestone.
 
-## Tech stack
+## What Is Live
 
-- Next.js App Router with static export
+- Visual simulator with PCs, switches, routers, servers, links, device configs, and ping validation.
+- Explainable connectivity diagnostics for subnet, gateway, path, and router interface issues.
+- Guided labs with objectives, validation, hints, completion state, and saved progress.
+- Academy modules for subnetting, AWS, Linux, packet flow, hardening, cost awareness, and interviews.
+- Learning Studio with notes, concept schemas, flashcards, resource vault, Pomodoro, tasks, converters, and roadmap builder.
+- Project library for saved topologies.
+- Firebase Auth and Firestore-backed persistence.
+- Dark, premium, engineering-focused UI.
+
+## Learning Studio
+
+Studio turns NetVerse from a simulator into a full learning operating system.
+
+- Notes workspace: capture lab summaries, commands, mistakes, and explanations.
+- Concept schema board: visually map topics like subnets, switches, routers, NAT, gateways, and packet flow.
+- Flashcard forge: create cards manually, generate cards from notes, or import simple text/PDF material.
+- Resource guard: save high-signal links, docs, tools, videos, and YouTube playlists.
+- Pomodoro cockpit: run focused study blocks without leaving the app.
+- Mission list: track daily practice tasks.
+- Engineer converters: subnet, binary/decimal/hex, bandwidth-delay product, MTU payload, and common ports.
+- Roadmap builder: use presets or build a custom path for CCNA, cloud networking, or Linux network ops.
+
+## Tech
+
+- Next.js App Router
 - TypeScript
 - Tailwind CSS
 - React Flow
-- Radix UI components
+- Radix UI primitives
 - Framer Motion
 - Zustand
 - Zod
@@ -40,68 +60,18 @@ That means the simulator uses local rule-based diagnostics instead of a hosted b
 - Cloud Firestore
 - Vitest
 
-## Local setup
+## Status
 
-```powershell
-npm.cmd install
-Copy-Item .env.local.example .env.local
-npm.cmd run dev
-```
+NetVerse is in active product development. The current build is a polished MVP moving toward a broader network-learning platform.
 
-Then open:
+The public repository does not contain secrets, private deployment credentials, Firebase admin keys, or production environment files.
 
-```text
-http://localhost:3000
-```
+## Quality Bar
 
-For a production-style static build:
+NetVerse is built to feel like a serious product:
 
-```powershell
-npm.cmd run build
-```
-
-Firebase Hosting serves the generated `out/` folder.
-
-## Environment variables
-
-Use `.env.local.example` as the template. Put real values in `.env.local`; that file is ignored by Git.
-
-The Firebase `NEXT_PUBLIC_*` values are browser config for a Firebase web app. They are not server secrets, but Firestore rules and authorized domains still matter.
-
-```env
-NEXT_PUBLIC_FIREBASE_API_KEY=
-NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
-NEXT_PUBLIC_FIREBASE_PROJECT_ID=
-NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=
-NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
-NEXT_PUBLIC_FIREBASE_APP_ID=
-NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=
-```
-
-## Firebase setup
-
-1. Create a Firebase project.
-2. Add a Firebase web app.
-3. Copy the web config into `.env.local`.
-4. Enable Authentication with Email/Password.
-5. Create a Firestore database.
-6. Deploy rules, indexes, and Hosting:
-
-```powershell
-npx.cmd firebase deploy --only hosting,firestore:rules,firestore:indexes
-```
-
-## Checks
-
-```powershell
-npm.cmd run typecheck
-npm.cmd run lint
-npm.cmd run test
-```
-
-## Security notes
-
-- Do not commit `.env`, `.env.local`, service account JSON files, private keys, or Firebase admin keys.
-- The repository intentionally ignores common Firebase secret file names.
-- Firestore access is scoped by authenticated user ID in `firestore.rules`.
-- The static Spark deployment does not require a server API key.
+- Practical workflows over toy demos.
+- Beginner-friendly language without dumbing down the engineering.
+- Clean separation between UI, simulator logic, persistence, diagnostics, labs, and learning tools.
+- Typed models and tested critical utility logic.
+- Public-facing copy that represents an owned product, not a clone-and-configure template.
