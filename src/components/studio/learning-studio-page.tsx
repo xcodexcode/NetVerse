@@ -326,10 +326,28 @@ function SchemaPanel({
   const [source, setSource] = useState("");
   const [target, setTarget] = useState("");
   const [edgeLabel, setEdgeLabel] = useState("relates to");
+  const displayNodes = useMemo(() => {
+    if (nodes.length <= 4) {
+      return nodes;
+    }
+
+    const columns = nodes.length <= 6 ? 3 : 4;
+    const rows = Math.ceil(nodes.length / columns);
+
+    return nodes.map((node, index) => {
+      const column = index % columns;
+      const row = Math.floor(index / columns);
+      return {
+        ...node,
+        x: ((column + 0.5) / columns) * 100,
+        y: 18 + ((row + 0.5) / rows) * 64
+      };
+    });
+  }, [nodes]);
   const edgeLines = edges
     .map((edge) => {
-      const sourceNode = nodes.find((node) => node.id === edge.source);
-      const targetNode = nodes.find((node) => node.id === edge.target);
+      const sourceNode = displayNodes.find((node) => node.id === edge.source);
+      const targetNode = displayNodes.find((node) => node.id === edge.target);
       return sourceNode && targetNode ? { edge, sourceNode, targetNode } : null;
     })
     .filter((item): item is { edge: ConceptEdge; sourceNode: ConceptNode; targetNode: ConceptNode } => Boolean(item));
@@ -403,13 +421,13 @@ function SchemaPanel({
                 </g>
               ))}
             </svg>
-            {nodes.map((node) => (
+            {displayNodes.map((node) => (
               <button
                 key={node.id}
                 type="button"
                 onDoubleClick={() => removeNode(node.id)}
                 className={cn(
-                  "absolute max-w-[210px] -translate-x-1/2 -translate-y-1/2 rounded-2xl border p-4 text-left backdrop-blur transition-transform hover:scale-105",
+                  "absolute w-[180px] max-w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 rounded-2xl border p-4 text-left backdrop-blur transition-transform hover:z-10 hover:scale-105",
                   toneClasses[node.tone]
                 )}
                 style={{ left: `${node.x}%`, top: `${node.y}%` }}

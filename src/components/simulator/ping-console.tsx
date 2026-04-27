@@ -53,7 +53,7 @@ export function PingConsole() {
           </div>
         </div>
       </CardHeader>
-      <CardContent className="grid min-h-0 flex-1 gap-4 lg:grid-cols-[340px_minmax(0,1fr)]">
+      <CardContent className="grid min-h-0 flex-1 gap-4 min-[1800px]:grid-cols-[minmax(280px,340px)_minmax(360px,1fr)]">
         <div className="grid gap-3">
           <div className="space-y-2">
             <p className="text-sm font-medium text-foreground">Source endpoint</p>
@@ -86,6 +86,7 @@ export function PingConsole() {
             </Select>
           </div>
           <Button
+            className="h-14 w-full rounded-2xl text-base"
             onClick={() => runPing(sourceId, destinationId)}
             disabled={!sourceId || !destinationId || sourceId === destinationId}
           >
@@ -94,7 +95,7 @@ export function PingConsole() {
           </Button>
         </div>
 
-        <ScrollArea className="rounded-2xl border border-white/10 bg-white/5">
+        <ScrollArea className="min-h-[180px] rounded-2xl border border-white/10 bg-white/5">
           <div className="space-y-3 p-4">
             {topology.recentPing ? (
               <>
